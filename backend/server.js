@@ -5,7 +5,9 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://flow-mind-ai-eta.vercel.app", "https://flowmind-ai-pxll.onrender.com"]
+}));
 app.use(express.json());
 
 // ─── Connect to MongoDB ───────────────────────────────────────────────────────
