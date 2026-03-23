@@ -1,0 +1,70 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --surface2: #1c1c27;
+  --border: #2a2a3d;
+  --accent: #7c6aff;
+  --accent2: #ff6a9b;
+  --text: #e8e8f0;
+  --text-muted: #7070a0;
+  --success: #4ade80;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.react-flow__background {
+  background-color: var(--bg) !important;
+}
+
+.react-flow__edge-path {
+  stroke: var(--accent) !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__arrowhead polyline {
+  stroke: var(--accent) !important;
+  fill: var(--accent) !important;
+}
+
+.react-flow__handle {
+  background: var(--accent) !important;
+  border: 2px solid var(--bg) !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.react-flow__minimap {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.react-flow__controls button {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  fill: var(--text) !important;
+}
+
+.react-flow__controls button:hover {
+  background: var(--surface2) !important;
+}
