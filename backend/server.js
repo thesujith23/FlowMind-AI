@@ -5,9 +5,7 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({
-  origin: ["http://localhost:5173", "https://flowmind-ai-pxll.onrender.com"]
-}));
+app.use(cors());
 app.use(express.json());
 
 // ─── Connect to MongoDB ───────────────────────────────────────────────────────
@@ -44,7 +42,7 @@ console.log("KEY LOADED:", process.env.OPENROUTER_API_KEY ? "YES ✅" : "NO ❌"
     headers: {
       "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
       "Content-Type": "application/json",
-      "HTTP-Referer": "https://flow-mind-ai-eta.vercel.app",
+      "HTTP-Referer": "http://localhost:3000",
       "X-Title": "AI Flow App",
     },
     body: JSON.stringify({
