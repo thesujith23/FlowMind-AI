@@ -1,4 +1,4 @@
-# AI Flow App 🤖
+# FlowMind AI 🤖
 
 A MERN stack application where users can type prompts into a React Flow node, get AI responses via OpenRouter, and save conversations to MongoDB.
 
