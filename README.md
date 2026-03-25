@@ -94,7 +94,7 @@ cd FlowMind-AI
 ```bash
 cd backend
 npm install
-cp .env.example .env
+cp .env
 ```
 
 Fill in your `.env`:
@@ -120,7 +120,7 @@ Backend runs on → `http://localhost:5000`
 ```bash
 cd ../frontend
 npm install
-cp .env.example .env
+cp .env
 ```
 
 Default `.env`:
