@@ -50,7 +50,7 @@ FlowMind-AI/
 ├── backend/
 │   ├── server.js          ← Express server + API routes
 │   ├── package.json
-│   └── .env.example
+│   └── .env
 │
 ├── frontend/
 │   ├── src/
@@ -63,7 +63,7 @@ FlowMind-AI/
 │   │       └── ResultNode.jsx  ← Right node (AI response)
 │   ├── index.html
 │   ├── vite.config.js
-│   └── .env.example
+│   └── .env
 │
 └── README.md
 ```
