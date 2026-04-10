@@ -34,34 +34,34 @@ app.post("/api/ask-ai", async (req, res) => {
     return res.status(400).json({ error: "Prompt is required" });
   }
 
-console.log("KEY LOADED:", process.env.OPENROUTER_API_KEY ? "YES ✅" : "NO ❌");
+  console.log("KEY LOADED:", process.env.OPENROUTER_API_KEY ? "YES ✅" : "NO ❌");
 
   try {
     const openRouterRes = await fetch(
-  "https://openrouter.ai/api/v1/chat/completions",
-  {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      "Content-Type": "application/json",
-      "HTTP-Referer": "http://localhost:3000",
-      "X-Title": "AI Flow App",
-    },
-    body: JSON.stringify({
-      model: "google/gemma-3-4b-it:free",
-      messages: [{ role: "user", content: prompt }],
-      max_tokens: 500,
-    }),
-  }
-);
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "http://localhost:3000",
+          "X-Title": "AI Flow App",
+        },
+        body: JSON.stringify({
+          model: "openrouter/free",
+          messages: [{ role: "user", content: prompt }],
+          max_tokens: 500,
+        }),
+      }
+    );
 
     const data = await openRouterRes.json();
 
-if (data.error) {
-  console.log("OPENROUTER ERROR:", JSON.stringify(data.error, null, 2)); // 👈 add this
-  const errorMessage = data.error.metadata?.raw || data.error.message || "Failed to get AI response";
-  return res.status(500).json({ error: errorMessage });
-}
+    if (data.error) {
+      console.log("OPENROUTER ERROR:", JSON.stringify(data.error, null, 2)); // 👈 add this
+      const errorMessage = data.error.metadata?.raw || data.error.message || "Failed to get AI response";
+      return res.status(500).json({ error: errorMessage });
+    }
 
     const answer = data.choices[0].message.content;
     res.json({ response: answer });
