@@ -106,6 +106,19 @@
   border-color: var(--success);
 }
 
+.btn-clear {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-clear:hover:not(:disabled) {
+  background: rgba(255,107,107,0.1);
+  color: #ff6b6b;
+  border-color: rgba(255,107,107,0.4);
+  transform: translateY(-1px);
+}
+
 /* ── Spinner ──────────────────────────────────────────────────────────────── */
 .spinner {
   width: 14px;

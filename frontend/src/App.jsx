@@ -67,10 +67,10 @@ export default function App() {
       setNodes((nds) =>
         nds.map((node) => {
           if (node.id === "1") {
-            return { ...node, data: { ...node.data, prompt, onPromptChange: setPrompt } };
+            return { ...node, data: { ...node.data, prompt } };
           }
           if (node.id === "2") {
-            return { ...node, data: { response: newResponse, loading: newLoading } };
+            return { ...node, data: { ...node.data, response: newResponse, loading: newLoading } };
           }
           return node;
         })
@@ -139,6 +139,20 @@ export default function App() {
     }
   };
 
+  // ── Clear ───────────────────────────────────────────────────────────────────
+  const handleClear = () => {
+    setPrompt("");
+    setResponse("");
+    setNodes((nds) =>
+      nds.map((n) => {
+        if (n.id === "1") return { ...n, data: { ...n.data, prompt: "" } };
+        if (n.id === "2") return { ...n, data: { ...n.data, response: "", loading: false } };
+        return n;
+      })
+    );
+    showToast("Cleared flow!", "success");
+  };
+
   // ── Save ────────────────────────────────────────────────────────────────────
   const handleSave = async () => {
     if (!prompt || !response) {
@@ -175,6 +189,13 @@ export default function App() {
           </div>
         </div>
         <div className="header-actions">
+          <button
+            className="btn btn-clear"
+            onClick={handleClear}
+            disabled={loading}
+          >
+            🗑️ Clear
+          </button>
           <button
             className={`btn btn-save ${saveStatus === "saved" ? "saved" : ""}`}
             onClick={handleSave}
